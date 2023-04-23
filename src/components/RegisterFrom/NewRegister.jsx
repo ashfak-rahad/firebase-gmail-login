@@ -1,15 +1,34 @@
 import React from "react";
 import { UserIcon } from "@heroicons/react/24/solid";
+import { Form } from "react-router-dom";
+import app from "../firebase/firebase.init";
+import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth'
+
+const auth = getAuth(app)
 
 const NewRegister = () => {
+
+    const handleRegister = (event)=>{
+        event.preventDefault();
+        const email =event.target.email.value;
+        const password=event.target.password.value;
+        console.log(email,password)
+        createUserWithEmailAndPassword(auth,email,password)
+        .then(result =>{
+          const loggedUser = result.user;
+          console.log(loggedUser);
+        })
+        .catch(error =>{
+          console.log(error);
+        })
+    }
   return (
+   <div>
+    <Form onSubmit={handleRegister}>
     <div className="flex justify-center items-center h-screen bg-indigo-600">
       <div className="w-96 p-6 shadow-lg bg-white rounded-md">
         <h1 className="text-3xl block text-center font-semibold">
-          <UserIcon
-            className="h-6 w-6 
-         "
-          />{" "}
+          
           Register
         </h1>
         <hr className="mt-3" />
@@ -51,6 +70,8 @@ const NewRegister = () => {
         </div>
       </div>
     </div>
+    </Form>
+   </div>
   );
 };
 

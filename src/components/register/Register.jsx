@@ -17,9 +17,9 @@ const Register = () => {
   }
   return (
     <div>
-      <h3>Pleace Register</h3>
-      <form onSubmit={handleSubmit}>
-        <input
+      
+      <form onSubmit={handleSubmit}><h3 className="text-3xl block text-center font-semibold">Pleace Register</h3>
+        <input className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
           onChange={handleEmailChange}
           type="email"
           name="email"
@@ -27,7 +27,7 @@ const Register = () => {
           placeholder="Your Email"
         />
         <br />
-        <input
+        <input className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
           onBlur={handlePasswordBlur}
           type="password"
           name="password"
@@ -35,7 +35,7 @@ const Register = () => {
           placeholder="Your Passord"
         />
         <br />
-        <input type="submit" value="Register" />
+        <input className="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold" type="submit" value="Register" />
       </form>
     </div>
   );
